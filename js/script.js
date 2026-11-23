@@ -12,12 +12,9 @@
   const navLinks = document.querySelectorAll('.nav-link');
   const scrollProgress = document.getElementById('scrollProgress');
   const backToTop = document.getElementById('backToTop');
-  const printResumeBtn = document.getElementById('printResumeBtn');
   const filterButtons = document.querySelectorAll('.filter-btn');
   const skillCards = document.querySelectorAll('.skill-category-card');
   const copyButtons = document.querySelectorAll('.copy-btn');
-  const contactForm = document.getElementById('contactForm');
-  const formFeedback = document.getElementById('formFeedback');
   const toastEl = document.getElementById('toast');
   const currentYearEl = document.getElementById('currentYear');
 
@@ -254,55 +251,7 @@
   });
 
   /* ------------------------------------------------------------------------
-     9. ฟอร์มติดต่อสำหรับสร้างร่างอีเมล (Mailto)
-     ------------------------------------------------------------------------ */
-  if (contactForm && formFeedback) {
-    contactForm.addEventListener('submit', function (event) {
-      event.preventDefault();
-
-      const name = document.getElementById('senderName').value.trim();
-      const subject = document.getElementById('senderSubject').value.trim();
-      const message = document.getElementById('senderMessage').value.trim();
-
-      formFeedback.className = 'form-feedback';
-
-      if (!name || !subject || !message) {
-        formFeedback.textContent = 'กรุณากรอกข้อมูลให้ครบทุกช่องก่อนส่งข้อความครับ';
-        formFeedback.classList.add('error');
-        return;
-      }
-
-      const bodyText =
-        'สวัสดีคุณ Phuwaret Phattarapakorn\n\n' +
-        message +
-        '\n\n---\nจาก: ' +
-        name;
-
-      const mailtoUrl =
-        'mailto:phuwaret.p@ku.th?subject=' +
-        encodeURIComponent(subject) +
-        '&body=' +
-        encodeURIComponent(bodyText);
-
-      formFeedback.textContent = 'กำลังเปิดแอปอีเมลพร้อมข้อความที่คุณกรอกไว้...';
-      formFeedback.classList.add('success');
-      showToast('เตรียมร่างอีเมลเรียบร้อยแล้ว');
-
-      window.location.href = mailtoUrl;
-    });
-  }
-
-  /* ------------------------------------------------------------------------
-     10. ปุ่มพิมพ์หรือบันทึกเรซูเม่เป็นไฟล์ PDF
-     ------------------------------------------------------------------------ */
-  if (printResumeBtn) {
-    printResumeBtn.addEventListener('click', function () {
-      window.print();
-    });
-  }
-
-  /* ------------------------------------------------------------------------
-     11. ฟังก์ชันแสดงข้อความแจ้งเตือนแบบ Toast
+     9. ฟังก์ชันแสดงข้อความแจ้งเตือนแบบ Toast
      ------------------------------------------------------------------------ */
   function showToast(message) {
     if (!toastEl) return;

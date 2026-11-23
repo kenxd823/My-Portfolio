@@ -373,17 +373,6 @@ ul {
   background: var(--surface-hover);
 }
 
-.btn-ghost {
-  background: transparent;
-  border-color: var(--border);
-  color: var(--text-secondary);
-}
-
-.btn-ghost:hover {
-  color: var(--accent);
-  border-color: var(--border-strong);
-}
-
 .btn-full {
   width: 100%;
 }
@@ -1079,16 +1068,10 @@ ul {
 /* ==========================================================================
    Contact Section
    ========================================================================== */
-.contact-grid {
-  display: grid;
-  grid-template-columns: 0.95fr 1.05fr;
-  gap: 24px;
-  align-items: start;
-}
-
 .contact-info {
   display: grid;
-  gap: 18px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
 }
 
 .contact-item-card {
@@ -1152,61 +1135,6 @@ ul {
 
 .copy-btn:hover {
   border-color: var(--border-strong);
-  color: var(--accent);
-}
-
-.form-hint {
-  font-size: 0.9rem;
-  color: var(--text-muted);
-  margin-bottom: 20px;
-}
-
-.form-group {
-  margin-bottom: 16px;
-}
-
-.form-group label {
-  display: block;
-  font-size: 0.9rem;
-  font-weight: 500;
-  margin-bottom: 6px;
-  color: var(--text-secondary);
-}
-
-.form-group input,
-.form-group textarea {
-  width: 100%;
-  padding: 12px 14px;
-  border-radius: 10px;
-  border: 1px solid var(--border);
-  background: var(--bg);
-  font-size: 0.95rem;
-  outline: none;
-  transition: border-color var(--transition), box-shadow var(--transition);
-}
-
-.form-group input:focus,
-.form-group textarea:focus {
-  border-color: var(--accent);
-  box-shadow: 0 0 0 3px var(--accent-soft);
-}
-
-.form-group textarea {
-  resize: vertical;
-  min-height: 110px;
-}
-
-.form-feedback {
-  min-height: 22px;
-  font-size: 0.88rem;
-  margin-bottom: 12px;
-}
-
-.form-feedback.error {
-  color: #f87171;
-}
-
-.form-feedback.success {
   color: var(--accent);
 }
 
@@ -1345,7 +1273,7 @@ main {
 
 .hero-grid > *,
 .about-grid > *,
-.contact-grid > *,
+.contact-info > *,
 .skills-grid > *,
 .education-grid > *,
 .profile-card,
@@ -1362,8 +1290,7 @@ main {
 
 @media (max-width: 960px) {
   .hero-grid,
-  .about-grid,
-  .contact-grid {
+  .about-grid {
     grid-template-columns: minmax(0, 1fr);
   }
 
@@ -1479,7 +1406,8 @@ main {
 
   .strengths-grid,
   .skills-grid,
-  .education-grid {
+  .education-grid,
+  .contact-info {
     grid-template-columns: minmax(0, 1fr);
   }
 
@@ -1500,11 +1428,6 @@ main {
 
   .referee-address {
     overflow-wrap: break-word;
-  }
-
-  .form-group input,
-  .form-group textarea {
-    font-size: 1rem;
   }
 
   .footer-inner {
@@ -1640,7 +1563,7 @@ main {
 }
 
 /* ==========================================================================
-   Print Styles (สำหรับปุ่ม "พิมพ์เรซูเม่")
+   Print Styles
    ========================================================================== */
 @media print {
   :root,
@@ -1661,7 +1584,6 @@ main {
   .hero-bg-glow,
   .hero-cta,
   .skill-filters,
-  .contact-form,
   .copy-btn,
   .back-to-top,
   .toast {
