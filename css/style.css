@@ -76,6 +76,9 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: calc(var(--header-height) + 16px);
+  overflow-x: clip;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
@@ -84,6 +87,7 @@ body {
   color: var(--text);
   line-height: 1.7;
   overflow-x: clip;
+  max-width: 100%;
   transition: background-color var(--transition), color var(--transition);
 }
 
@@ -1335,6 +1339,10 @@ ul {
    Responsive Breakpoints
    ========================================================================== */
 /* ป้องกันองค์ประกอบภายใน Grid/Flex (เช่น กล่องโค้ด) ดันหน้าจอล้นแนวนอนบนมือถือ */
+main {
+  overflow-x: clip;
+}
+
 .hero-grid > *,
 .about-grid > *,
 .contact-grid > *,
@@ -1343,13 +1351,20 @@ ul {
 .profile-card,
 .code-card {
   min-width: 0;
+  max-width: 100%;
+}
+
+.hero-visual,
+.profile-card,
+.code-card {
+  width: 100%;
 }
 
 @media (max-width: 960px) {
   .hero-grid,
   .about-grid,
   .contact-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .hero-visual {
@@ -1448,16 +1463,24 @@ ul {
   }
 
   .code-content {
+    width: 100%;
+    max-width: 100%;
     padding: 14px;
-    font-size: 0.74rem;
+    font-size: 0.76rem;
     white-space: pre-wrap;
-    overflow-wrap: anywhere;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  .code-content code {
+    white-space: inherit;
+    overflow-wrap: inherit;
   }
 
   .strengths-grid,
   .skills-grid,
   .education-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .skill-filters {
@@ -1523,6 +1546,11 @@ ul {
   .profile-image-wrap {
     max-width: 210px;
     padding: 6px;
+  }
+
+  .code-content {
+    padding: 12px;
+    font-size: 0.72rem;
   }
 
   .hero-cta {
