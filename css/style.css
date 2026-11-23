@@ -545,15 +545,17 @@ ul {
   background: var(--surface);
   border: 1px solid var(--border);
   box-shadow: var(--shadow-md);
-  max-width: 340px;
+  max-width: 280px;
   margin: 0 auto;
   width: 100%;
 }
 
 .profile-image {
   width: 100%;
-  aspect-ratio: 1 / 1;
+  height: auto;
+  aspect-ratio: 3 / 4;
   object-fit: cover;
+  object-position: center top;
   border-radius: calc(var(--radius-lg) - 6px);
 }
 
